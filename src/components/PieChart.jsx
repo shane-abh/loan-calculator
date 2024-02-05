@@ -8,32 +8,33 @@ const PieChart = ({ chartData }) => {
   const [monthlyPayment, monthlyInterest, monthlyPrincipal] = chartData;
 
   console.log(monthlyInterest);
+  const color = getComputedStyle(document.querySelector(':root'))
+    .getPropertyValue('--text-color');
+    console.log(`"${color}"`)
   const data = {
     labels: ["Monthly Interest", "Monthly Principal"],
     datasets: [
       {
-        label: "# of Votes",
+        // labels: ["Montly Interest", "monthlyPrincipal"],
         data: [monthlyInterest, monthlyPrincipal],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.7)",
+          `"${color}"`,
+          "#3326AE",
           
         ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
+        // borderColor: [
+        
         borderWidth: 1,
       },
     ],
   };
 
   const options = {        
-    cutout: 150
+    cutout: 100, 
+    animateRotate: true,
+    radius: 150,
+    responsive: true,
+    maintainAspectRatio: true,
 };
  
   

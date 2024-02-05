@@ -3,12 +3,12 @@ import { useState, useRef, useEffect } from "react";
 import { result } from "../calculations/calculateDetails";
 import { calculateMortgagePayoff } from "../calculations/recomendation";
 
-const LoanDetails = ({setLineChartData, setPieChartData, setinputVals}) => {
+const LoanDetails = ({setLineChartData, setPieChartData, setinputVals, setNormalData}) => {
   const [inputValues, setInputValues] = useState({
-    loanAmount: 0,
-    rate: 0,
-    loanDuration: 0,
-    downPaymentPercent: 0,
+    loanAmount: 100000,
+    rate: 3.5,
+    loanDuration: 20,
+    downPaymentPercent: 20,
   });
 
 //  useEffect(() => {
@@ -54,7 +54,8 @@ const LoanDetails = ({setLineChartData, setPieChartData, setinputVals}) => {
     const ans = result(inputValues)
     setLineChartData({balance :ans.balance, monthlyInterestPayments: ans.monthlyInterestPayments})
     setPieChartData([ans.res.monthlyPayment, ans.res.monthlyInterest, ans.res.monthlyPrincipal])
-     setinputVals(inputValues)
+    setinputVals(inputValues)
+    setNormalData(ans.res)
     
    
     
@@ -76,7 +77,7 @@ const LoanDetails = ({setLineChartData, setPieChartData, setinputVals}) => {
                 name="loanAmount"
                 id="loan-amount"
                 type="number"
-                value={inputValues.loanAmount}
+                value={(inputValues.loanAmount ) }
                 onChange={handleInputChange("loanAmount")}
                 ref={inputRefs.loanAmount}
               />

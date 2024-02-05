@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReccomdationDashboard = ({ recomendationValues }) => {
+const ReccomdationDashboard = ({ recomendationValues,normalData }) => {
   console.log(recomendationValues);
   return (
     <>
@@ -8,10 +8,13 @@ const ReccomdationDashboard = ({ recomendationValues }) => {
       <div className="recommendation-cards">
         <div className="card">
           <p className="rec-tip">
-            If you made ${recomendationValues.monthlyPayment.toFixed(2)} payment
+            <div>
+
+            If you made <span className="imp-highlight">${(recomendationValues.additionalPayment.toLocaleString("en-US", {maximumFractionDigits:2})) }</span> payment
             every {recomendationValues.interval}-year
             interval, you could potentially pay off the mortgage{" "}
-            {recomendationValues.paidOffYearsEarlier.toFixed(2)} years earlier.
+            <span className="imp-highlight">{recomendationValues.paidOffYearsEarlier.toLocaleString("en-US", {maximumFractionDigits:2})}</span> years earlier.
+            </div>
           </p>
         </div>
         <div className="card savings">
@@ -19,15 +22,15 @@ const ReccomdationDashboard = ({ recomendationValues }) => {
           <hr />
           <div className="savings-info">
             <p>Time</p>
-            <p>-2.5yrs</p>
+            <p className="imp-highlight">-{recomendationValues.paidOffYearsEarlier.toLocaleString("en-US", {maximumFractionDigits:2})}yrs</p>
           </div>
           <div className="savings-info">
-            <p>Time</p>
-            <p>-2.5yrs</p>
+            <p>Interest Amount</p>
+            <p className="imp-highlight">${(normalData.totalInterestPaid - recomendationValues.totalInterestPaid).toLocaleString("en-US", {maximumFractionDigits:2})}</p>
           </div>
           <div className="savings-info">
-            <p>Time</p>
-            <p>-2.5yrs</p>
+            <p>Total Saved</p>
+            <p className="imp-highlight">${(normalData.totalAmountPaid - recomendationValues.sum).toLocaleString("en-US", {maximumFractionDigits:2})}</p>
           </div>
         </div>
       </div>

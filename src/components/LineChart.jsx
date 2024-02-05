@@ -44,16 +44,18 @@ const LineChart = ({chartData}) => {
 
 
     const options = {
-        responsive: true,
+      responsive: true,
+      maintainAspectRatio: true,
         plugins: {
           legend: {
             position: 'top',
           },
           title: {
-            display: true,
-            text: 'Chart.js Line Chart',
+            display: false,
+            text: 'Amoratization Chart',
           },
         },
+
       };
 
    
@@ -65,16 +67,16 @@ const LineChart = ({chartData}) => {
         labels,
         datasets: [
           {
-            label: 'Dataset 1',
+            label: 'Balance',
             data: price,
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: '#3326AE',
+            backgroundColor: '#3326AE',
           },
           {
-            label: 'Dataset 2',
+            label: 'Interest',
             data: interests,
-            borderColor: 'rgb(53, 162, 235)',
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            borderColor: '#FF483B',
+            backgroundColor: '#FF483B',
           },
         ],
       };
