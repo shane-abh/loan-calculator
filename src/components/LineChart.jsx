@@ -65,17 +65,33 @@ const LineChart = ({ chartData }) => {
     },
     scales: {
       x: {
+        title:{
+          display:true,
+          text: 'Years',
+          font: {
+            weight: 'bold'
+          }
+          
+        },
         ticks: { color: legendColor.toString() },
         grid: {
           display: false,
         },
       },
       y: {
+        title:{
+          display:true,
+          text: 'Amount',
+          font: {
+            weight: 'bold'
+          }
+        },
         ticks: { color: legendColor.toString() },
         grid: {
           display: false,
         },
       },
+      
     },
   };
 
