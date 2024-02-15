@@ -22,8 +22,7 @@ const AdditionalPaymentForm = ({setRecomendationValues}) => {
     const loanAmountRanges = [
       { min: 1000, max: 10000, values: { Percentage: 20, interval: parseInt(loanDuration / 5) } },
       { min: 10001, max: 50000, values: { Percentage: 15, interval: parseInt(loanDuration / 5) } },
-      { min: 50001, max: 100000, values: { Percentage: 12, interval: parseInt(loanDuration / 5) } },
-      { min: 50001, max: 100000, values: { Percentage: 10, interval: parseInt(loanDuration / 6) } },
+      { min: 50001, max: 100000, values: { Percentage: 6, interval: parseInt(loanDuration / 5) } },
       { min: 100001, max: 200000, values: { Percentage: 5.9, interval: parseInt(loanDuration / 7) } },
       { min: 200001, max: 300000, values: { Percentage: 5.5, interval: parseInt(loanDuration / 9) } },
       { min: 300001, max: 400000, values: { Percentage: 4.5, interval: parseInt(loanDuration / 10) } },
@@ -40,7 +39,7 @@ const AdditionalPaymentForm = ({setRecomendationValues}) => {
       // Add more ranges as needed
     ];
     
-    const selectedRange = loanAmountRanges.find(range => loanAmount > range.min && loanAmount < range.max);
+    const selectedRange = loanAmountRanges.find(range => loanAmount >= range.min && loanAmount <= range.max);
     
     if (selectedRange) {
       setInputValues(selectedRange.values);
