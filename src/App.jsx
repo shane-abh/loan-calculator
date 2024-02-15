@@ -1,4 +1,4 @@
-import { useState, useRef, createContext } from "react";
+import { useState, useRef, createContext, useEffect } from "react";
 
 import "./App.css";
 import PieChart from "./components/PieChart";
@@ -6,7 +6,7 @@ import LineChart from "./components/LineChart";
 import LoanDetails from "./components/LoanDetails";
 import AdditionalPaymentForm from "./components/AdditionalPaymentForm";
 import ReccomdationDashboard from "./components/ReccomdationDashboard";
-import hamburger from "./assets/hamburger.svg";
+
 
 export const loaninputValues = createContext();
 
@@ -22,6 +22,9 @@ function App() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const color = getComputedStyle(document.querySelector(':root'))
+  .getPropertyValue('--text-color');
+
   function handleClick() {
     setIsMenuOpen(!isMenuOpen);
   }
@@ -31,7 +34,12 @@ function App() {
       <header>
         <h1>Mortgage Calculator</h1>
         <div className="img-container">
-          <img src={hamburger} className="hamburger" onClick={handleClick} />
+          
+        <label for="hamburger" class="hamburger" onClick={handleClick}>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+      </label>
           {isMenuOpen ? (
             <div onClick={handleClick} className="side-menu">
               <h4>Choose Your Theme</h4>
@@ -74,11 +82,17 @@ function App() {
             />
           </div>
           <div className="item align-center">
+          <h2 className="details">Breakdown</h2>
+          {normalData?
+
+            <h3 >Monthly Payment: ${normalData.monthlyPayment.toFixed(2)}</h3> 
+            : ""
+          }
             <PieChart chartData={pieChartData} />
           </div>
           <div className="item ">
             <h2 className="details">Ammoritization</h2>
-            <div className="align-center">
+            <div className="align-center graph">
               <LineChart chartData={lineChartData} />
             </div>
           </div>
