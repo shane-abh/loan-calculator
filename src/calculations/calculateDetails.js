@@ -116,7 +116,7 @@ export const result = ({
       .map((point, index) => ({ point, label: index }));
   };
 
-  const maxPointsToShow = 10;
+  const maxPointsToShow = loanDuration;
   const totalDataPoints = res.balance.length;
   const loanDurations = res.balance;
   const monthlyInterestPayment = res.monthlyInterestPayment;
